@@ -1,0 +1,63 @@
+<div class="students-records">
+    <form>
+      <div class="mb-3 row">
+        <label>Search Text</label>
+        <div class="col-xs-3 col-sm-auto">
+          <input class="form-control" type="text" [formControl]="filter">
+        </div>
+      </div>
+    </form>
+    <table  class="table table-striped record-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Physics</th>
+          <th>Chemistry</th>
+          <th>Maths</th>
+          <th>Computer</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (student of students; track student.name; let i =$index ) {
+    
+          <tr>
+            <th>{{i+1}}</th>
+            <td>
+              <ngb-highlight [result]="student.name" [term]="filter.value"></ngb-highlight>
+              <!-- {{student.name}} -->
+            </td>
+            <td>
+              <img
+              [src]=student.studentImage
+              class="se-2"
+              style="width: 20px;">
+              <!-- {{student.country}} -->
+              <ngb-highlight [result]="student.country" [term]="filter.value"></ngb-highlight>
+            </td> 
+            <td>
+              <ngb-highlight [result]="student.physics" [term]="filter.value"></ngb-highlight>
+              <!-- {{student.physics}} -->
+            </td>
+            <td>
+              <ngb-highlight [result]="student.chemistry" [term]="filter.value"></ngb-highlight>
+              <!-- {{student.chemistry}} -->
+            </td>
+            <td>
+              <ngb-highlight [result]="student.maths" [term]="filter.value"></ngb-highlight>
+              <!-- {{student.maths}} -->
+            </td>
+            <td>
+              <ngb-highlight [result]="student.computer" [term]="filter.value"></ngb-highlight>
+              <!-- {{student.computer}} -->
+            </td>
+          </tr>
+        }@empty {
+          <tr>No Records to show!</tr>
+        }
+        
+      </tbody>
+    </table>
+  </div>
+

@@ -1,0 +1,6 @@
+<p>dashboard works!</p>
+
+<students-details-side-bar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded =  !sidebarExpanded"></students-details-side-bar>
+<div class="students-records" [ngClass]="{'sidebarExpanded' : sidebarExpanded} ">
+<router-outlet></router-outlet>
+</div>

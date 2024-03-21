@@ -1,0 +1,13 @@
+.students-records {
+    padding :16px;
+    margin-left: 60px;
+
+    &__record-table{
+
+        border: 1px solid rgb(151, 127, 127);
+
+    }
+    &.sidebarExpanded {
+        margin-left: 250px;
+    }
+}

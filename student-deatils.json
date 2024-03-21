@@ -1,0 +1,179 @@
+{
+  "uuid": "8e1070fe-3d20-46bc-8bd3-5718424e8fd3",
+  "lastMigration": 32,
+  "name": "Student deatils",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "1b152abc-f5b5-401b-b2d4-52958aa08a18",
+      "type": "http",
+      "documentation": "addresses",
+      "method": "get",
+      "endpoint": "api/addresses",
+      "responses": [
+        {
+          "uuid": "a309dcdc-ab99-43eb-a3b9-f2347fc771dd",
+          "body": "[\n  {{#repeat 10}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"BSc\",\n      \"subjects\": \"Maths\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}}\n  \n   {{#repeat 10}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"MSc\",\n      \"subjects\": \"physics\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}}\n]\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c45fe088-9629-4fb4-8045-70839ca7073e",
+      "type": "http",
+      "documentation": "students",
+      "method": "get",
+      "endpoint": "api/students",
+      "responses": [
+        {
+          "uuid": "421feee3-c8c9-4e21-ba25-f92b2b427fb1",
+          "body": "[\n  {{#repeat 10}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"physics\": {{faker 'datatype.number' min=0 max=25}},\n      \"chemistry\": {{faker 'datatype.number' min=0 max=25}},\n      \"maths\": {{faker 'datatype.number' min=0 max=25}},\n      \"computer\": {{faker 'datatype.number' min=0 max=25}}\n    }\n  {{/repeat}}\n]\n\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "d4a27917-0043-4839-a63c-aa46e41602d0",
+      "type": "http",
+      "documentation": "studentsMarks",
+      "method": "get",
+      "endpoint": "api/studentsMarks",
+      "responses": [
+        {
+          "uuid": "09e95982-24b3-456a-93a8-3f510c8665d2",
+          "body": "[\n  {{#repeat 5}}\n    {\n      \"id\": \"{{faker 'datatype.number'}}\",\n      \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n      \"physics\": \"{{faker 'datatype.number' min=0 max=25}}\",\n      \"maths\": \"{{faker 'datatype.number' min=0 max=25}}\"\n    }\n  {{/repeat}},\n  {{#repeat 5}}\n    {\n      \"id\": \"{{faker 'datatype.number'}}\",\n      \"name\": \"{{faker 'name.firstName'}} {{faker 'name.lastName'}}\",\n      \"computer\": \"{{faker 'datatype.number' min=0 max=25}}\",\n      \"chemistry\": \"{{faker 'datatype.number' min=0 max=25}}\"\n    }\n  {{/repeat}},\n  {{#repeat 5}}\n    {\n      \"id\": \"{{faker 'datatype.number'}}\",\n      \"name\": \"{{faker 'name.firstName'}}{{faker 'name.lastName'}}\",\n      \"computer\": \"{{faker 'datatype.number' min=0 max=25}}\",\n      \"chemistry\": \"{{faker 'datatype.number' min=0 max=25}}\"\n    }\n  {{/repeat}}\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "58a12df2-ee0f-4342-bb56-15907710b642",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/student-details",
+      "responses": [
+        {
+          "uuid": "1111e246-059f-49aa-a27c-798271c6c5fe",
+          "body": "[\n  \n  {{#repeat 4}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"BSc\",\n      \"subjects\": \"Maths\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}},\n  {{#repeat 5}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"MSc\",\n      \"subjects\": \"Physics\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}},\n  {{#repeat 8}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"BSc\",\n      \"subjects\": \"Chemistry\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}},\n  {{#repeat 5}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"BSc\",\n      \"subjects\": \"Physics\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}},\n  {{#repeat 5}}\n    {\n      \"name\": \"{{faker 'name.fullName'}}\",\n      \"country\": \"{{faker 'address.country'}}\",\n      \"state\": \"{{faker 'address.stateAbbr'}}\",\n      \"passportDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"fitnessDeclaration\": \"{{faker 'datatype.boolean'}}\",\n      \"courseName\": \"Msc\",\n      \"subjects\": \"Computer Science\",\n      \"date\": \"{{faker 'date.birthdate' min=17 max=65}}\",\n      \"city\": \"{{faker 'address.city'}}\",\n      \"studentImage\": \"{{faker 'image.avatar'}}\",\n      \"street\": \"{{faker 'address.streetAddress'}}\",\n      \"address2\": \"{{faker 'address.secondaryAddress'}}\",\n      \"zip\": \"{{faker 'address.zipCode'}}\",\n      \"phone\": \"{{faker 'phone.number'}}\",\n      \"email\": \"{{faker 'internet.email'}}\",\n      \"website\": \"{{faker 'internet.url'}}\"\n    }\n  {{/repeat}}\n  \n  ]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "1b152abc-f5b5-401b-b2d4-52958aa08a18"
+    },
+    {
+      "type": "route",
+      "uuid": "c45fe088-9629-4fb4-8045-70839ca7073e"
+    },
+    {
+      "type": "route",
+      "uuid": "d4a27917-0043-4839-a63c-aa46e41602d0"
+    },
+    {
+      "type": "route",
+      "uuid": "58a12df2-ee0f-4342-bb56-15907710b642"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": false,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

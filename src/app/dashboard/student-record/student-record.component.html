@@ -1,0 +1,158 @@
+<div>
+    Number Of Records TO Display : {{studentRecordCount()}} : {{studentWarning()}}
+</div>
+<div class="student-entry">
+    <ng-template #studentsForm let-modal>
+        <form action="" class="student-entry-form">
+            <div class="student-entry-form__form-row">
+                Full Name
+                <div class="student-entry-form__form-row--input-section">
+                    <span class="form-group">
+                        <label>Name</label>
+                        <input [formControl]="nameControl" type="text" class="form-control" placeholder="first Name">
+                    </span>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row">
+                Origin
+                <div class="student-entry-form__form-row--input-section">
+                    <span class="form-group">
+                        <label>Country</label>
+                        <input [formControl]="countryControl" type="text" class="form-control" placeholder="Country Name">
+                    </span>
+                    <span class="form-group">
+                        <label>State</label>
+                        <input [formControl]="stateControl" type="text" class="form-control" placeholder="State Name">
+                    </span>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row">
+                Declaration
+                <div class="student-entry-form__form-row--input-section">
+                    <span class="form-group">
+                        <label>Passport Declaration</label>
+                        <input [formControl]="passportDeclarationControl" type="text" class="form-control" placeholder="Passport Declaration">
+                    </span>
+                    <span class="form-group">
+                        <label>Fitness Declaration</label>
+                        <input [formControl]="fitnessDeclarationControl" type="text" class="form-control" placeholder="itness Declaration">
+                    </span>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row">
+                Course Name
+                <div class="student-entry-form__form-row--input-section">
+                    <span class="form-group">
+                        <label>Course Name</label>
+                        <input [formControl]="courseNameControl" type="text" class="form-control" placeholder="Course Name">
+                    </span>
+                    <span class="form-group">
+                        <label>Subject</label>
+                        <input [formControl]="subjectsControl" type="text" class="form-control" placeholder="Subject Name">
+                    </span>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row">
+                Birth Date
+                <div class="student-entry-form__form-row--input-section">
+                    <div class="input-group" >
+                        <input
+                         [formControl]="dateControl"
+                          class="form-control"
+                           placeholder="YYY-MM-DD"
+                           ngbDatepicker
+                           [footerTemplate]="footerTemplate"
+                           #d ="ngbDatepicker"/>
+                           <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()"></button>
+                    </div>
+                    <div class="align-center">
+                        <span *ngIf="dateControl?.value?.year">
+                            Selected year : {{dateControl.value.year}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row">
+                Present Address
+                <div class="student-entry-form__form-row--input-address">
+                    <span class="form-group">
+                        <label>Street Address</label>
+                        <input [formControl]="streetControl" type="text" class="form-control" placeholder="Street Address"/>
+                    </span>
+                    <span class="form-group">
+                        <label>Address 2</label>
+                        <input [formControl]="address2Control" type="text" class="form-control" placeholder="Street Address2"/>
+                    </span>
+                    <span class="form-group">
+                        <label>Email Address</label>
+                        <input [formControl]="emailControl" type="text" class="form-control" placeholder="Email"/>
+                    </span>
+                </div>
+            </div>
+            <div class="student-entry-form__form-row--input-section">
+                <span class="form-group">
+                    <label >State</label>
+                <div class="field-label">{{stateControl.value}}</div>
+                </span>
+                <span class="form-group">
+                    <label >City</label>
+                    <input class="form-control" [formControl]="cityControl" type="text"/>
+                </span>
+            </div>
+            <div class="student-entry-form__form-row--input-section">
+                <span class="form-group">
+                    <label>Postal Code</label>
+                    <input class="form-control" [formControl]="zipControl">
+                </span>
+                <span class="form-group">
+                    <label>Country</label>
+                    <div  class="field-label">{{countryControl.value}}</div>
+                </span>
+            </div>
+            <div class="student-entry-form__form-row--input--buttons">
+                <button type="submit" class="btn btn-primary" (click)="modal.close()" [disabled]="studentDetailsForm.status === 'INVALID'" >Submit</button>
+                <button type="submit" class="btn btn-light" (click)="modal.dismiss()">Cancel</button>
+            </div>
+            <ng-template #footerTemplate>
+                <hr class="my-0"/>
+                <button class="btn btn-primary btn-sm m-2 float-start" (click)="model = today; d.close">Today</button>
+                <button class="btn btn-secondary btn-sm m-2 float-start" (click)="d.close">Close</button>
+            </ng-template>
+        </form>
+    </ng-template>
+    <ag-grid-angular 
+    class="ag-theme-alpine"
+    (gridReady)="onGridReady($event)"
+    [columnDefs]="columnDef"
+    [rowSelection]="'single'"
+    [rowData]="apiResponse"
+    style="height: 800px; width: 100%;">
+    </ag-grid-angular>
+</div>
+
+<ng-template #confirmDeleteModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Profile Deletion</h4>
+        <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>
+            <strong>Are you sure you want to delete <span class="text-rpimary">{{selectedRecords.name}}</span> profile?</strong>
+        </p>
+        <p>
+            All the information about this used will be deleted from the application
+            <span class="text-dager">This operation can not be undone.</span>
+        </p>
+        <div class="modal-footer">
+            <button class="btn-outliner-secondary btn" (click)="modal.dismiss('Close button clicked')">Cancel</button>
+            <button class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+        </div>
+    </div>
+</ng-template>
+
+<div class="add-btn-container">
+    <button class="add-btn-container__action-button btn btn-success" (click)="open(studentsForm)"> Add Students</button>
+    <button class="add-btn-container__action-button btn btn-light" [disabled]="!checkIfSelected()" (click)="onOpenViewForm(studentsForm)">View Students</button>
+    <button class="add-btn-container__action-button btn btn-danger" [disabled]="!checkIfSelected()" (click)="onDeletedRecord(confirmDeleteModal)">Delete Students</button>
+    <button class="add-btn-container__action-button btn btn-info" [disabled]="!checkIfSelected()" (click)="clearSelection()">Clear Selection</button>
+</div>
